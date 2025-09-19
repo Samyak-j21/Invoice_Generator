@@ -43,7 +43,7 @@ function App() {
   useEffect(() => {
     const fetchInvoices = async () => {
       try {
-        const response = await fetch('http://localhost:5000/invoices');
+        const response = await fetch('https://invoice-generator-5q68.onrender.com/invoices');
         const data = await response.json();
         setSavedInvoices(data);
         console.log('Fetched invoices:', data);
@@ -112,7 +112,7 @@ function App() {
 
   const handleSave = async () => {
     try {
-      const response = await fetch('http://localhost:5000/save', {
+      const response = await fetch('https://invoice-generator-5q68.onrender.com/save', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
