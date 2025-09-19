@@ -1,4 +1,6 @@
 # MERN Stack Invoice Generator
+### 🌐 Live Demo
+You can see the live application here: [**Invoice Generator**](https://invoice-generator-one-mu.vercel.app/)
 This is a full-stack web application for generating, saving, and managing professional invoices. The application is built using the MERN stack and includes features for handling Indian GST calculations.
 ## 🚀 Features
 * **Create & Save Invoices**: Generate new invoices and save them to a MongoDB database.
@@ -9,13 +11,13 @@ This is a full-stack web application for generating, saving, and managing profes
 * **Invoice Retrieval**: View a list of all previously saved invoices.
 ## ⚙️ Technologies Used
 ### Frontend
-* **React**: For building the user interface.
-* **JS-PDF**: For client-side PDF generation.
+* [**React**](https://reactjs.org/): For building the user interface.
+* [**JS-PDF**](https://jspdf.org/): For client-side PDF generation.
 ### Backend
-* **Node.js & Express**: To power the server and API.
-* **MongoDB & Mongoose**: For the database to store invoice data.
-* **CORS**: For handling cross-origin requests.
-* **Dotenv**: To manage environment variables securely.
+* [**Node.js**](https://nodejs.org/) & [**Express**](https://expressjs.com/): To power the server and API.
+* [**MongoDB**](https://www.mongodb.com/) & [**Mongoose**](https://mongoosejs.com/): For the database to store invoice data.
+* [**CORS**](https://expressjs.com/en/resources/middleware/cors.html): For handling cross-origin requests.
+* [**Dotenv**](https://github.com/motdotla/dotenv): To manage environment variables securely.
 ## 💻 Getting Started
 Follow these steps to get the project up and running on your local machine.
 ### Prerequisites
@@ -23,36 +25,33 @@ Follow these steps to get the project up and running on your local machine.
 * MongoDB Atlas Account
 ### 1. Backend Setup
 The backend server needs to be run first.
-1.  Navigate into the `server` folder:
-    ```bash
-    cd server
-    ```
-2.  Install the backend dependencies:
-    ```bash
-    npm install
-    ```
-3.  Create a `.env` file in the `server` folder and add your MongoDB connection string:
-    ```
-    MONGO_URI=your_mongodb_atlas_connection_string
-    ```
-    Make sure there are no quotes around the connection string.
-4.  Start the backend server:
-    ```bash
-    node server.js
-    ```
-    The server will run on `http://localhost:5000`.
+1.  Navigate into the `server` folder:
+    ```bash
+    cd server
+    ```
+2.  Install the backend dependencies:
+    ```bash
+    npm install
+    ```
+3.  Create a `.env` file in the `server` folder and add your MongoDB connection string:
+    ```
+    MONGO_URI=your_mongodb_atlas_connection_string
+    ```
+    Make sure there are no quotes around the connection string.
+4.  Start the backend server:
+    ```bash
+    node server.js
+    ```
+    The server will run on `http://localhost:5000`.
 ### 2. Frontend Setup
 The frontend app needs to be run in a separate terminal.
-1.  Open a new terminal window and navigate to the `invoice-generator` root folder.
-2.  Install the frontend dependencies:
-    ```bash
-    npm install
-    ```
-3.  Start the React app:
-    ```bash
-    npm start
-    ```
-    The app will open in your browser at `http://localhost:3000`.
-## 📄 License
-
-This project is licensed under the ISC License.
+1.  Open a new terminal window and navigate to the `invoice-generator` root folder.
+2.  Install the frontend dependencies:
+    ```bash
+    npm install
+    ```
+3.  Start the React app:
+    ```bash
+    npm start
+    ```
+    The app will open in your browser at `http://localhost:3000`.
