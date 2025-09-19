@@ -5,22 +5,61 @@ export default function Header({ companyInfo, onInputChange }) {
   return (
     <header className="header">
       <div className="contact-info">
-        <p>&#9990; [000-000-0000]</p>
-        <p>&#9990; [000-000-0000]</p>
-        <p>&#9993; [companyemail@gmail.com]</p>
+        <p>
+          <input
+            type="tel"
+            name="phone"
+            value={companyInfo.phone}
+            onChange={onInputChange}
+            placeholder="Phone Number"
+          />
+        </p>
+        <p>
+          <input
+            type="email"
+            name="email"
+            value={companyInfo.email}
+            onChange={onInputChange}
+            placeholder="Email"
+          />
+        </p>
       </div>
       <div className="company-section">
-        <div className="logo-box">Your Logo Here</div>
+        <div className="logo-box">
+          {companyInfo.logoUrl ? (
+            <img src={companyInfo.logoUrl} alt="Company Logo" />
+          ) : (
+            <input
+              type="text"
+              name="logoUrl"
+              value={companyInfo.logoUrl}
+              onChange={onInputChange}
+              placeholder="Logo URL"
+            />
+          )}
+        </div>
         <div className="company-details">
           <input
             type="text"
             name="name"
             className="company-name-input"
             value={companyInfo.name}
-            onChange={(e) => onInputChange(e)}
+            onChange={onInputChange}
           />
-          <p>{companyInfo.address}</p>
-          <p>GSTIN: {companyInfo.gstin}</p>
+          <input
+            type="text"
+            name="address"
+            value={companyInfo.address}
+            onChange={onInputChange}
+            placeholder="Company Address"
+          />
+          <input
+            type="text"
+            name="gstin"
+            value={companyInfo.gstin}
+            onChange={onInputChange}
+            placeholder="GSTIN"
+          />
         </div>
         <div className="invoice-title">
           <p className="invoice-heading">INVOICE</p>
