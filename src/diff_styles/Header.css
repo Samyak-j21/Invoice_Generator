@@ -1,66 +1,127 @@
+/* General Header Styling */
 .header {
-  border-bottom: 2px solid #ccc;
-  padding-bottom: 20px;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border: 1px solid #eee;
   margin-bottom: 20px;
+  font-family: Arial, sans-serif;
+  color: #333;
 }
 
-.contact-info {
+/* Top Contact Info (Phone, Email) */
+.top-contact-info {
   display: flex;
   justify-content: flex-end;
   gap: 15px;
+  margin-bottom: 15px;
+}
+
+.top-contact-info .contact-input {
+  border: 1px solid #ccc;
+  padding: 5px 8px;
+  border-radius: 4px;
+  width: 200px;
   font-size: 0.9em;
-  color: #666;
-  border-bottom: 1px solid #005a9c;
-  padding-bottom: 5px;
-  margin-bottom: 10px;
 }
 
-.contact-info p {
-  margin: 0;
-}
-
+/* Company Section (Logo, Company Details, Invoice Title) */
 .company-section {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
 }
 
+.company-logo-details {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+}
+
+/* Logo Box and Upload Input */
 .logo-box {
-  width: 100px;
-  height: 100px;
-  border: 1px dotted #ccc;
+  width: 120px;
+  height: 120px;
+  border: 1px dashed #ccc;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-size: 0.8em;
+  color: #777;
+  position: relative;
+}
+
+.logo-box .company-logo {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+.logo-box .logo-placeholder {
+  width: 100%;
+  height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
-  color: #888;
-  font-size: 0.8em;
-  text-align: center;
 }
 
-.company-details {
-  flex: 1;
-  padding: 0 20px;
+.logo-box .logo-url-input {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  /* Make it invisible */
+  cursor: pointer;
 }
 
-.company-name {
-  font-size: 1.5em;
+/* Company Info Editable (Name, Address, GSTIN) */
+.company-info-editable {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.company-info-editable input {
+  border: 1px solid #ccc;
+  padding: 5px 8px;
+  border-radius: 4px;
+  width: 350px;
+  font-size: 1em;
+}
+
+.company-info-editable .company-name-input {
   font-weight: bold;
-  margin: 0px;
+  font-size: 1.2em;
 }
 
-.invoice-title {
+/* Invoice Title Section (INVOICE, Invoice Number, Date) */
+.invoice-title-section {
   text-align: right;
+  flex-shrink: 0;
+  width: 200px;
 }
 
 .invoice-heading {
   font-size: 2.5em;
-  color: #005a9c;
   font-weight: bold;
-  margin: 0;
+  color: #0056b3;
+  margin: 0 0 10px 0;
 }
 
-.invoice-number, .invoice-date {
-  font-size: 1em;
-  color: #666;
-  margin: 0;
+.invoice-detail-placeholder {
+  font-size: 0.9em;
+  color: #555;
+  margin: 2px 0;
+}
+
+/* Horizontal Rule */
+.header-divider {
+  border: 0;
+  height: 1px;
+  background-color: #ddd;
+  margin-top: 20px;
 }
