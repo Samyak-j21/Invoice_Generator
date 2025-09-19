@@ -16,12 +16,15 @@
 .form-group {
   margin-bottom: 15px;
   display: flex;
+  flex-wrap: wrap;
+  /* Allows label and input to wrap on small screens */
   align-items: center;
   gap: 10px;
 }
 
 .form-group label {
-  min-width: 120px;
+  flex-shrink: 0;
+  /* Prevents the label from shrinking on small screens */
   font-weight: bold;
 }
 
@@ -31,4 +34,21 @@
   padding: 8px;
   border: 1px solid #ccc;
   border-radius: 4px;
+  min-width: 150px;
+  /* Ensures input is not too small on desktop */
+}
+
+/* MOBILE STYLES: Stack labels and inputs on mobile */
+@media (max-width: 768px) {
+  .form-group {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 5px;
+  }
+
+  .form-group input,
+  .form-group select {
+    width: 100%;
+    box-sizing: border-box;
+  }
 }

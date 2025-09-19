@@ -1,14 +1,13 @@
 /* General Header Styling */
 .header {
   padding: 20px;
-  background-color: #f9f9f9;
-  border: 1px solid #eee;
+  border-bottom: 2px solid #ccc;
   margin-bottom: 20px;
   font-family: Arial, sans-serif;
   color: #333;
 }
 
-/* Top Contact Info (Phone, Email) */
+/* Top Contact Info */
 .top-contact-info {
   display: flex;
   justify-content: flex-end;
@@ -24,20 +23,23 @@
   font-size: 0.9em;
 }
 
-/* Company Section (Logo, Company Details, Invoice Title) */
+/* Company Section */
 .company-section {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
+  flex-wrap: wrap;
+  /* Allows items to wrap on smaller screens */
 }
 
 .company-logo-details {
   display: flex;
   align-items: flex-start;
   gap: 20px;
+  flex-grow: 1;
 }
 
-/* Logo Box and Upload Input */
+/* Logo Box and Upload */
 .logo-box {
   width: 120px;
   height: 120px;
@@ -49,14 +51,15 @@
   text-align: center;
   font-size: 0.8em;
   color: #777;
+  overflow: hidden;
   position: relative;
+  flex-shrink: 0;
 }
 
 .logo-box .company-logo {
   max-width: 100%;
   max-height: 100%;
   object-fit: contain;
-  display: block;
 }
 
 .logo-box .logo-placeholder {
@@ -65,6 +68,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  background-color: #f0f0f0;
 }
 
 .logo-box .logo-url-input {
@@ -74,22 +78,25 @@
   width: 100%;
   height: 100%;
   opacity: 0;
-  /* Make it invisible */
   cursor: pointer;
 }
 
-/* Company Info Editable (Name, Address, GSTIN) */
+/* Company Info Editable */
 .company-info-editable {
   display: flex;
   flex-direction: column;
   gap: 5px;
+  flex-grow: 2;
 }
 
 .company-info-editable input {
   border: 1px solid #ccc;
   padding: 5px 8px;
   border-radius: 4px;
-  width: 350px;
+  width: 100%;
+  /* Make inputs full width */
+  box-sizing: border-box;
+  /* Include padding in the width calculation */
   font-size: 1em;
 }
 
@@ -98,7 +105,7 @@
   font-size: 1.2em;
 }
 
-/* Invoice Title Section (INVOICE, Invoice Number, Date) */
+/* Invoice Title Section */
 .invoice-title-section {
   text-align: right;
   flex-shrink: 0;
@@ -124,4 +131,31 @@
   height: 1px;
   background-color: #ddd;
   margin-top: 20px;
+}
+
+/* MEDIA QUERY for mobile responsiveness */
+@media (max-width: 768px) {
+  .company-section {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .company-logo-details,
+  .company-info-editable,
+  .invoice-title-section {
+    width: 100%;
+    text-align: center;
+  }
+
+  .company-info-editable input {
+    text-align: center;
+  }
+
+  .invoice-title-section {
+    margin-top: 15px;
+  }
+
+  .top-contact-info {
+    justify-content: center;
+  }
 }

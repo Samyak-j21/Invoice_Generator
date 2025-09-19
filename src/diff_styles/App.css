@@ -1,22 +1,6 @@
 body {
   font-family: Arial, sans-serif;
   margin: 0;
-  padding: 20px;
-  background-color: #f7f7f7;
-}
-
-.invoice-generator-app {
-  max-width: 800px;
-  margin: auto;
-  background: white;
-  padding: 30px;
-  border: 1px solid #eee;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-body {
-  font-family: Arial, sans-serif;
-  margin: 0;
   padding: 10px;
   background-color: #f7f7f7;
 }
@@ -42,9 +26,7 @@ body {
   margin-bottom: 20px;
 }
 
-/* * MOBILE STYLES: This section makes your app responsive.
- * The styles inside this block will only apply to screens smaller than 768px.
- */
+/* MOBILE STYLES: This section makes your app responsive. */
 @media (max-width: 768px) {
   .invoice-generator-app {
     padding: 15px;
@@ -53,6 +35,7 @@ body {
 
   .details-section {
     flex-direction: column;
+    /* Stacks PartyDetails and InvoiceDetails vertically */
     gap: 15px;
   }
 }
