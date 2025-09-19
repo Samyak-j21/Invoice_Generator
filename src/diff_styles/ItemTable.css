@@ -1,0 +1,46 @@
+.item-table-container {
+  margin-top: 20px;
+}
+
+.table-header {
+  display: grid;
+  /* Updated grid columns to add HSN/SAC Code */
+  grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
+  background-color: #005a9c;
+  color: white;
+  font-weight: bold;
+  padding: 10px 0;
+}
+
+.header-cell {
+  padding: 0 10px;
+}
+
+.table-row {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
+  padding: 15px 0;
+  border-bottom: 1px solid #eee;
+}
+
+.cell {
+  padding: 0 10px;
+  color: #444;
+}
+
+.cell input {
+  width: calc(100% - 16px);
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.add-item-button {
+  padding: 8px 15px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 10px;
+}
