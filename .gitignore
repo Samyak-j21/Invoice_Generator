@@ -1,19 +1,29 @@
-# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+# Dependency directories
+node_modules/
+**/node_modules/
+jspdf/
 
-# dependencies
-/node_modules
-/.pnp
-.pnp.js
-
-# build
-/build
-/dist
-
-# dotenv
+# Environment configurations
 .env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+**/.env
+**/.env.local
 
-# misc
+# Build output
+dist/
+build/
+
+# IDE files & OS metadata
+.vscode/
+.idea/
 .DS_Store
+Thumbs.db
+
+# Debug logs
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+lerna-debug.log*
