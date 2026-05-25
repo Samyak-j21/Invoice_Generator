@@ -23,6 +23,19 @@ app.use(express.json({ limit: '10mb' })); // Support larger base64 logo uploads
 // Initialize local database on start
 initializeDatabase();
 
+// Root status endpoint to confirm server health
+app.get('/', (req, res) => {
+  res.status(200).json({
+    status: "healthy",
+    message: "Premium Invoice Generator API is running successfully!",
+    database: "Local JSON file system",
+    endpoints: {
+      invoices: "/api/invoices",
+      profile: "/api/profile"
+    }
+  });
+});
+
 // 1. Get all Invoices
 app.get('/api/invoices', (req, res) => {
   try {
