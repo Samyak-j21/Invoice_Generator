@@ -5,6 +5,8 @@ import InvoiceForm from './components/InvoiceForm';
 import InvoiceList from './components/InvoiceList';
 import InvoicePreview from './components/InvoicePreview';
 
+const API_BASE = import.meta.env.PROD ? 'https://invoice-generator-5q68.onrender.com' : '';
+
 export default function App() {
   const [activeTab, setActiveTab] = useState('dashboard');
   const [invoices, setInvoices] = useState([]);
@@ -28,7 +30,7 @@ export default function App() {
   // Fetch all invoices
   const fetchInvoices = async () => {
     try {
-      const res = await fetch('/api/invoices');
+      const res = await fetch(`${API_BASE}/api/invoices`);
       if (res.ok) {
         const data = await res.json();
         setInvoices(data);
@@ -41,7 +43,7 @@ export default function App() {
   // Load default profile
   const fetchProfile = async () => {
     try {
-      const res = await fetch('/api/profile');
+      const res = await fetch(`${API_BASE}/api/profile`);
       if (res.ok) {
         const data = await res.json();
         if (data.name) {
@@ -61,7 +63,7 @@ export default function App() {
   // Delete invoice
   const handleDeleteInvoice = async (id) => {
     try {
-      const res = await fetch(`/api/invoices/${id}`, {
+      const res = await fetch(`${API_BASE}/api/invoices/${id}`, {
         method: 'DELETE'
       });
       if (res.ok) {
@@ -79,7 +81,7 @@ export default function App() {
     e.preventDefault();
     setProfileSaving(true);
     try {
-      const res = await fetch('/api/profile', {
+      const res = await fetch(`${API_BASE}/api/profile`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(profileData)

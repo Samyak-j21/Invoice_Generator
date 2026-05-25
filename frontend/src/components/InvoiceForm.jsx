@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { Plus, Trash, Save, X, Eye, FileText, Check } from 'lucide-react';
 import confetti from 'canvas-confetti';
 
+const API_BASE = import.meta.env.PROD ? 'https://invoice-generator-5q68.onrender.com' : '';
+
 const INDIAN_STATES = [
   "Andhra Pradesh", "Arunachal Pradesh", "Assam", "Bihar", "Chhattisgarh", "Goa", "Gujarat", 
   "Haryana", "Himachal Pradesh", "Jharkhand", "Karnataka", "Kerala", "Madhya Pradesh", 
@@ -58,7 +60,7 @@ export default function InvoiceForm({ invoiceId, onSaveSuccess, onCancel, onPrev
       setLoading(true);
       try {
         // Load default shop profile first
-        const profileRes = await fetch('/api/profile');
+        const profileRes = await fetch(`${API_BASE}/api/profile`);
         if (profileRes.ok) {
           const profileData = await profileRes.json();
           if (profileData.name) {
@@ -68,7 +70,7 @@ export default function InvoiceForm({ invoiceId, onSaveSuccess, onCancel, onPrev
 
         // If editing an existing invoice, load its details
         if (invoiceId) {
-          const invRes = await fetch(`/api/invoices/${invoiceId}`);
+          const invRes = await fetch(`${API_BASE}/api/invoices/${invoiceId}`);
           if (invRes.ok) {
             const inv = await invRes.json();
             setCompanyInfo(inv.companyInfo || {});
@@ -106,7 +108,7 @@ export default function InvoiceForm({ invoiceId, onSaveSuccess, onCancel, onPrev
   const handleSaveDefaultProfile = async () => {
     setProfileSaving(true);
     try {
-      const res = await fetch('/api/profile', {
+      const res = await fetch(`${API_BASE}/api/profile`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(companyInfo)
@@ -197,7 +199,7 @@ export default function InvoiceForm({ invoiceId, onSaveSuccess, onCancel, onPrev
     };
 
     try {
-      const url = invoiceId ? `/api/invoices/${invoiceId}` : '/api/invoices';
+      const url = invoiceId ? `${API_BASE}/api/invoices/${invoiceId}` : `${API_BASE}/api/invoices`;
       const method = invoiceId ? 'PUT' : 'POST';
 
       const res = await fetch(url, {
