@@ -580,7 +580,7 @@ export default function InvoiceForm({ invoiceId, onSaveSuccess, onCancel, onPrev
             </div>
 
             {manualTaxToggle && (
-              <div className="form-group" style={{ maxWidth: '300px', marginTop: '10px' }} className="fade-in">
+              <div className="form-group fade-in" style={{ maxWidth: '300px', marginTop: '10px' }}>
                 <label>Manual Tax Amount (₹):</label>
                 <input 
                   type="number" 
