@@ -1,0 +1,186 @@
+[
+  {
+    "_id": "inv_seed_jain_jewellers",
+    "companyInfo": {
+      "name": "Jain Jewellers",
+      "address": "124, Gold Bazaar, Karol Bagh, New Delhi, Delhi 110005",
+      "gstin": "07AAAFJ8901J1Z2",
+      "phone": "+91 98123 45678",
+      "email": "sales@jainjewellers.com",
+      "state": "Delhi",
+      "logoUrl": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIiB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCI+PGNpcmNsZSBjeD0iNTAiIGN5PSI1MCIgcj0iNDAiIGZpbGw9IiNmNWI5MDYiLz48cG9seWdvbiBwb2ludHM9IjUwLDIwIDYwLDQ1IDg1LDUwIDYwLDU1IDUwLDgwIDQwLDU1IDE1LDUwIDQwLDQ1IiBmaWxsPSIjZmZmZmZmIi8+PC9zdmc+"
+    },
+    "clientInfo": {
+      "name": "Siddharth Mehta",
+      "address": "45, Rajouri Garden, New Delhi",
+      "gstin": "",
+      "phone": "+91 99999 12345",
+      "email": "siddharth@gmail.com",
+      "placeOfSupply": "Delhi"
+    },
+    "invoiceDetails": {
+      "number": "INV-2026-0482",
+      "date": "2026-05-20"
+    },
+    "paymentInfo": {
+      "status": "Paid",
+      "method": "UPI"
+    },
+    "items": [
+      { "id": 1, "description": "22K Gold Chain (10 Grams)", "hsnSac": "7113", "quantity": 1, "unitPrice": 72500 },
+      { "id": 2, "description": "Jewellery Making Charges (10g)", "hsnSac": "7113", "quantity": 1, "unitPrice": 4500 }
+    ],
+    "manualTaxToggle": false,
+    "manualTax": 0,
+    "taxRate": 0.03,
+    "totals": {
+      "subtotal": 77000,
+      "calculatedTax": 2310,
+      "grandTotal": 79310,
+      "cgst": 1155,
+      "sgst": 1155,
+      "igst": 0,
+      "isIntraState": true
+    },
+    "createdAt": "2026-05-20T10:15:30.000Z",
+    "updatedAt": "2026-05-20T10:15:30.000Z"
+  },
+  {
+    "_id": "inv_seed_national_ent",
+    "companyInfo": {
+      "name": "National Enterprises",
+      "address": "# 36, Pyramid Towers, Shanmugam Road, Marine Drive, Ernakulam, Kerala 682031",
+      "gstin": "32AAAAA1234F1Z8",
+      "phone": "+91 484 234567",
+      "email": "info@nationalent.com",
+      "state": "Kerala",
+      "logoUrl": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIiB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCI+PHJlY3QgeD0iMjAiIHk9IjIwIiB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHJ4PSIxMCIgZmlsbD0iIzRlNDZlNSIvPjx0ZXh0IHg9IjUwIiB5PSI2MCIgZm9udC1zaXplPSI0MCIgZm9udC1mYW1pbHk9Ik91dGZpdCxzYW5zLXNlcmlmIiBmb250LXdlaWdodD0iODAwIiBmaWxsPSIjZmZmZmZmIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5OPC90ZXh0Pjwvc3ZnPg=="
+    },
+    "clientInfo": {
+      "name": "Raj Stores",
+      "address": "# 27, M G Road, Kochi, Kerala",
+      "gstin": "32BBB1234AA02",
+      "phone": "+91 98460 55443",
+      "email": "contact@rajstores.com",
+      "placeOfSupply": "Kerala"
+    },
+    "invoiceDetails": {
+      "number": "INV-2026-0511",
+      "date": "2026-05-24"
+    },
+    "paymentInfo": {
+      "status": "Paid",
+      "method": "UPI"
+    },
+    "items": [
+      { "id": 1, "description": "Heavy Duty Batteries", "hsnSac": "85065000", "quantity": 2, "unitPrice": 5000 },
+      { "id": 2, "description": "Pure Sine Wave Inverter 1KVA", "hsnSac": "85044010", "quantity": 1, "unitPrice": 10000 }
+    ],
+    "manualTaxToggle": false,
+    "manualTax": 0,
+    "taxRate": 0.18,
+    "totals": {
+      "subtotal": 20000,
+      "calculatedTax": 3600,
+      "grandTotal": 23600,
+      "cgst": 1800,
+      "sgst": 1800,
+      "igst": 0,
+      "isIntraState": true
+    },
+    "createdAt": "2026-05-24T14:20:00.000Z",
+    "updatedAt": "2026-05-24T14:20:00.000Z"
+  },
+  {
+    "_id": "inv_seed_apex_tech",
+    "companyInfo": {
+      "name": "Apex Tech Solutions",
+      "address": "5th Block, Koramangala, Bengaluru, Karnataka 560095",
+      "gstin": "29AAACA9999K2Z4",
+      "phone": "+91 80 4123 4567",
+      "email": "billing@apextech.in",
+      "state": "Karnataka",
+      "logoUrl": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIiB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCI+PGNpcmNsZSBjeD0iNTAiIGN5PSI1MCIgcj0iNDAiIGZpbGw9IiMwMmI5ODEiLz48cG9seWdvbiBwb2ludHM9IjMwLDcwIDUwLDMwIDcwLDcwIiBmaWxsPSIjZmZmZmZmIi8+PC9zdmc+"
+    },
+    "clientInfo": {
+      "name": "Venture Labs LLC",
+      "address": "Tech Park Phase 2, Pune, Maharashtra",
+      "gstin": "27AAACV7777J1Z0",
+      "phone": "+91 98200 98200",
+      "email": "procure@venturelabs.com",
+      "placeOfSupply": "Maharashtra"
+    },
+    "invoiceDetails": {
+      "number": "INV-2026-0520",
+      "date": "2026-05-25"
+    },
+    "paymentInfo": {
+      "status": "Pending",
+      "method": "Net Banking"
+    },
+    "items": [
+      { "id": 1, "description": "MacBook Pro M3 Max (16-inch, 64GB)", "hsnSac": "8471", "quantity": 1, "unitPrice": 249900 },
+      { "id": 2, "description": "USB-C Dual Hub Docking Station", "hsnSac": "8471", "quantity": 3, "unitPrice": 4500 }
+    ],
+    "manualTaxToggle": false,
+    "manualTax": 0,
+    "taxRate": 0.18,
+    "totals": {
+      "subtotal": 263400,
+      "calculatedTax": 47412,
+      "grandTotal": 310812,
+      "cgst": 0,
+      "sgst": 0,
+      "igst": 47412,
+      "isIntraState": false
+    },
+    "createdAt": "2026-05-25T11:00:00.000Z",
+    "updatedAt": "2026-05-25T11:00:00.000Z"
+  },
+  {
+    "_id": "inv_seed_green_valley",
+    "companyInfo": {
+      "name": "Green Valley Farms",
+      "address": "Ooty Road, Mysore, Karnataka 570008",
+      "gstin": "29AAAGV1234D1Z2",
+      "phone": "+91 821 298374",
+      "email": "fresh@greenvalleyfarms.com",
+      "state": "Karnataka",
+      "logoUrl": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIiB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCI+PGNpcmNsZSBjeD0iNTAiIGN5PSI1MCIgcj0iNDAiIGZpbGw9IiMwNTk2NjkiLz48cGF0aCBkPSJNNTAsMjUgQzM1LDQwIDM1LDYwIDUwLDc1IEM2NSw2MCA2NSw0MCA1MCwyNSBaIiBmaWxsPSIjZmZmZmZmIi8+PC9zdmc+"
+    },
+    "clientInfo": {
+      "name": "Radisson Blu Hotels",
+      "address": "Outer Ring Road, Bengaluru, Karnataka",
+      "gstin": "29AAACR5555M1Z2",
+      "phone": "+91 80 6666 8888",
+      "email": "kitchen.blr@radisson.com",
+      "placeOfSupply": "Karnataka"
+    },
+    "invoiceDetails": {
+      "number": "INV-2026-0518",
+      "date": "2026-05-23"
+    },
+    "paymentInfo": {
+      "status": "Paid",
+      "method": "Card"
+    },
+    "items": [
+      { "id": 1, "description": "Organic Premium Hass Avocados (kg)", "hsnSac": "0804", "quantity": 50, "unitPrice": 180 },
+      { "id": 2, "description": "Fresh Strawberries (Packs)", "hsnSac": "0810", "quantity": 100, "unitPrice": 90 }
+    ],
+    "manualTaxToggle": false,
+    "manualTax": 0,
+    "taxRate": 0.05,
+    "totals": {
+      "subtotal": 18000,
+      "calculatedTax": 900,
+      "grandTotal": 18900,
+      "cgst": 450,
+      "sgst": 450,
+      "igst": 0,
+      "isIntraState": true
+    },
+    "createdAt": "2026-05-23T09:30:00.000Z",
+    "updatedAt": "2026-05-23T09:30:00.000Z"
+  }
+]
