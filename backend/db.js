@@ -7,8 +7,19 @@ if (!uri) {
   process.exit(1);
 }
 
-// Sanitize: trim whitespace and remove any trailing semicolon that causes parsing errors
-uri = uri.trim().replace(/;$/, '');
+// Aggressive Sanitization: strip leading/trailing quotes, spaces, and semicolons
+uri = uri.trim()
+         .replace(/^["']|["']$/g, '') // remove leading/trailing quotes
+         .replace(/;$/, '')           // remove trailing semicolon
+         .trim();                     // final trim spaces
+
+// Safe logger to inspect prefix without exposing credentials
+const maskedStart = uri.substring(0, 15);
+console.log(`Initializing MongoClient. URI starts with: "${maskedStart}...", Total Length: ${uri.length}`);
+
+if (!uri.startsWith("mongodb://") && !uri.startsWith("mongodb+srv://")) {
+  console.error(`WARNING: Connection string prefix is invalid! Starts with: "${uri.substring(0, 20)}"`);
+}
 
 const client = new MongoClient(uri);
 
