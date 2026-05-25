@@ -13,6 +13,11 @@ uri = uri.trim()
          .replace(/;$/, '')           // remove trailing semicolon
          .trim();                     // final trim spaces
 
+// Fail-safe: if the entire ".env" line "MONGO_URI=mongodb+srv://..." was pasted into the dashboard value box
+if (uri.startsWith("MONGO_URI=")) {
+  uri = uri.replace(/^MONGO_URI=/, '').trim();
+}
+
 // Safe logger to inspect prefix without exposing credentials
 const maskedStart = uri.substring(0, 15);
 console.log(`Initializing MongoClient. URI starts with: "${maskedStart}...", Total Length: ${uri.length}`);
