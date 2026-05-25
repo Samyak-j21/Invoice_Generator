@@ -1,7 +1,15 @@
 const express = require('express');
 const cors = require('cors');
-const { ObjectId } = require('mongodb');
-const { connectToDatabase, getDb } = require('./db');
+const {
+  initializeDatabase,
+  getInvoices,
+  getInvoiceById,
+  saveInvoice,
+  updateInvoice,
+  deleteInvoice,
+  getProfile,
+  saveProfile
+} = require('./db');
 const nodemailer = require('nodemailer');
 require('dotenv').config();
 
@@ -10,17 +18,22 @@ const PORT = process.env.PORT || 5000;
 
 // Enable CORS and parsing of JSON bodies
 app.use(cors());
-app.use(express.json({ limit: '10mb' })); // Larger limit to support base64 logo uploads
+app.use(express.json({ limit: '10mb' })); // Support larger base64 logo uploads
+
+// Initialize local database on start
+initializeDatabase();
 
 // 1. Get all Invoices
-app.get('/api/invoices', async (req, res) => {
+app.get('/api/invoices', (req, res) => {
   try {
-    const db = getDb();
-    const invoices = await db.collection('invoices')
-      .find({})
-      .sort({ "invoiceDetails.date": -1, _id: -1 })
-      .toArray();
-    res.status(200).json(invoices);
+    const invoicesList = getInvoices();
+    // Sort descending by date
+    invoicesList.sort((a, b) => {
+      const dateA = new Date(a.invoiceDetails?.date || 0);
+      const dateB = new Date(b.invoiceDetails?.date || 0);
+      return dateB - dateA;
+    });
+    res.status(200).json(invoicesList);
   } catch (error) {
     console.error('Error fetching invoices:', error);
     res.status(500).json({ error: 'Failed to fetch invoices.' });
@@ -28,14 +41,10 @@ app.get('/api/invoices', async (req, res) => {
 });
 
 // 2. Get a single Invoice by ID
-app.get('/api/invoices/:id', async (req, res) => {
+app.get('/api/invoices/:id', (req, res) => {
   try {
     const { id } = req.params;
-    if (!ObjectId.isValid(id)) {
-      return res.status(400).json({ error: 'Invalid Invoice ID format' });
-    }
-    const db = getDb();
-    const invoice = await db.collection('invoices').findOne({ _id: new ObjectId(id) });
+    const invoice = getInvoiceById(id);
     if (!invoice) {
       return res.status(404).json({ error: 'Invoice not found.' });
     }
@@ -47,19 +56,13 @@ app.get('/api/invoices/:id', async (req, res) => {
 });
 
 // 3. Save a new Invoice
-app.post('/api/invoices', async (req, res) => {
+app.post('/api/invoices', (req, res) => {
   try {
     const invoiceData = req.body;
-    const db = getDb();
-    
-    // Add timestamp metadata
-    invoiceData.createdAt = new Date();
-    invoiceData.updatedAt = new Date();
-    
-    const result = await db.collection('invoices').insertOne(invoiceData);
+    const newInvoice = saveInvoice(invoiceData);
     res.status(201).json({ 
       message: 'Invoice saved successfully!', 
-      invoiceId: result.insertedId 
+      invoiceId: newInvoice._id 
     });
   } catch (error) {
     console.error('Error saving invoice:', error);
@@ -68,25 +71,13 @@ app.post('/api/invoices', async (req, res) => {
 });
 
 // 4. Update an existing Invoice
-app.put('/api/invoices/:id', async (req, res) => {
+app.put('/api/invoices/:id', (req, res) => {
   try {
     const { id } = req.params;
-    if (!ObjectId.isValid(id)) {
-      return res.status(400).json({ error: 'Invalid Invoice ID format' });
-    }
     const invoiceData = req.body;
-    const db = getDb();
     
-    // Remove _id from body if it exists to avoid MongoDB modification error
-    delete invoiceData._id;
-    invoiceData.updatedAt = new Date();
-    
-    const result = await db.collection('invoices').updateOne(
-      { _id: new ObjectId(id) },
-      { $set: invoiceData }
-    );
-    
-    if (result.matchedCount === 0) {
+    const updated = updateInvoice(id, invoiceData);
+    if (!updated) {
       return res.status(404).json({ error: 'Invoice not found.' });
     }
     
@@ -98,16 +89,12 @@ app.put('/api/invoices/:id', async (req, res) => {
 });
 
 // 5. Delete an Invoice
-app.delete('/api/invoices/:id', async (req, res) => {
+app.delete('/api/invoices/:id', (req, res) => {
   try {
     const { id } = req.params;
-    if (!ObjectId.isValid(id)) {
-      return res.status(400).json({ error: 'Invalid Invoice ID format' });
-    }
-    const db = getDb();
-    const result = await db.collection('invoices').deleteOne({ _id: new ObjectId(id) });
+    const deleted = deleteInvoice(id);
     
-    if (result.deletedCount === 0) {
+    if (!deleted) {
       return res.status(404).json({ error: 'Invoice not found.' });
     }
     
@@ -118,12 +105,11 @@ app.delete('/api/invoices/:id', async (req, res) => {
   }
 });
 
-// 6. Get Supplier Shop Profile (convenience feature so they don't type it every time)
-app.get('/api/profile', async (req, res) => {
+// 6. Get Supplier Shop Profile
+app.get('/api/profile', (req, res) => {
   try {
-    const db = getDb();
-    const profile = await db.collection('profile').findOne({});
-    res.status(200).json(profile || {});
+    const profile = getProfile();
+    res.status(200).json(profile);
   } catch (error) {
     console.error('Error fetching profile:', error);
     res.status(500).json({ error: 'Failed to fetch profile.' });
@@ -131,18 +117,10 @@ app.get('/api/profile', async (req, res) => {
 });
 
 // 7. Save or Update Supplier Shop Profile
-app.post('/api/profile', async (req, res) => {
+app.post('/api/profile', (req, res) => {
   try {
     const profileData = req.body;
-    const db = getDb();
-    delete profileData._id; // prevent _id issues
-    
-    const result = await db.collection('profile').updateOne(
-      {},
-      { $set: profileData },
-      { upsert: true }
-    );
-    
+    saveProfile(profileData);
     res.status(200).json({ message: 'Shop Profile saved successfully!' });
   } catch (error) {
     console.error('Error saving profile:', error);
@@ -155,12 +133,10 @@ app.post('/api/send-email', async (req, res) => {
   try {
     const { toEmail, invoiceHtml, invoiceNumber } = req.body;
 
-    // Use a placeholder/default test transporter. In real life, users would set up SMTP credentials
-    // We'll use nodemailer to send beautiful HTML invoices.
     let transporter = nodemailer.createTransport({
       host: "smtp.ethereal.email",
       port: 587,
-      secure: false, // true for 465, false for other ports
+      secure: false, 
       auth: {
         user: 'test-account@ethereal.email', 
         pass: 'test-password'
@@ -171,7 +147,7 @@ app.post('/api/send-email', async (req, res) => {
       from: '"Premium Invoice Generator" <invoices@example.com>',
       to: toEmail,
       subject: `Tax Invoice #${invoiceNumber || 'N/A'}`,
-      html: invoiceHtml || '<h3>Please find your invoice details attached/displayed in the portal.</h3>'
+      html: invoiceHtml || '<h3>Please find your invoice details attached.</h3>'
     };
 
     await transporter.sendMail(mailOptions);
@@ -182,14 +158,7 @@ app.post('/api/send-email', async (req, res) => {
   }
 });
 
-// Start DB then server
-connectToDatabase()
-  .then(() => {
-    app.listen(PORT, () => {
-      console.log(`Server running and listening on port ${PORT}`);
-    });
-  })
-  .catch(err => {
-    console.error('Failed to connect to database before starting server:', err);
-    process.exit(1);
-  });
+// Start server
+app.listen(PORT, () => {
+  console.log(`Server running on local file system database and listening on port ${PORT}`);
+});

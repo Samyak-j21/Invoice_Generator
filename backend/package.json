@@ -1,7 +1,7 @@
 {
   "name": "invoice-generator-backend",
   "version": "1.0.0",
-  "description": "Backend server for Premium Invoice Generator using Express and MongoDB native driver",
+  "description": "Backend server for Premium Invoice Generator using Express and local JSON database files",
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
@@ -11,7 +11,6 @@
     "cors": "^2.8.5",
     "dotenv": "^17.2.2",
     "express": "^5.1.0",
-    "mongodb": "^6.5.0",
     "nodemailer": "^7.0.6"
   },
   "devDependencies": {
