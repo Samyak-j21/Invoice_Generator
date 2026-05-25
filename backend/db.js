@@ -1,11 +1,14 @@
 const { MongoClient } = require('mongodb');
 require('dotenv').config();
 
-const uri = process.env.MONGO_URI;
+let uri = process.env.MONGO_URI;
 if (!uri) {
   console.error("CRITICAL: MONGO_URI environment variable is missing!");
   process.exit(1);
 }
+
+// Sanitize: trim whitespace and remove any trailing semicolon that causes parsing errors
+uri = uri.trim().replace(/;$/, '');
 
 const client = new MongoClient(uri);
 
