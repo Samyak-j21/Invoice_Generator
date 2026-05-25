@@ -313,7 +313,6 @@ export default function InvoiceForm({ invoiceId, onSaveSuccess, onCancel, onPrev
               value={companyInfo.address} 
               onChange={e => setCompanyInfo({ ...companyInfo, address: e.target.value })} 
               placeholder="Street Address, City, Postal Code"
-              style={{ background: 'var(--bg-tertiary)', border: '1px solid var(--card-border)', color: '#fff', padding: '10px', borderRadius: '4px' }}
             />
           </div>
 
@@ -427,7 +426,7 @@ export default function InvoiceForm({ invoiceId, onSaveSuccess, onCancel, onPrev
             </div>
           </div>
 
-          <div style={{ marginTop: '24px', borderTop: '1px solid rgba(255,255,255,0.05)', paddingTop: '20px' }}>
+          <div style={{ marginTop: '24px', borderTop: '1px solid var(--card-border)', paddingTop: '20px' }}>
             <div className="form-grid" style={{ gap: '12px', marginBottom: 0 }}>
               <div className="form-group">
                 <label>Invoice Number:</label>

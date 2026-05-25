@@ -97,7 +97,7 @@ export default function Dashboard({ invoices, onCreateNew, onOpenProfile }) {
           <span style={{ color: 'var(--text-secondary)' }}>Paid ({paidPercentage}%)</span>
           <span style={{ color: 'var(--text-secondary)' }}>Uncollected ({100 - paidPercentage}%)</span>
         </div>
-        <div style={{ height: '12px', background: 'rgba(255,255,255,0.05)', borderRadius: '6px', overflow: 'hidden', display: 'flex' }}>
+        <div style={{ height: '12px', background: 'var(--bg-tertiary)', borderRadius: '6px', overflow: 'hidden', display: 'flex' }}>
           <div style={{ width: `${paidPercentage}%`, background: 'var(--color-success)', height: '100%', transition: 'width 0.5s ease' }}></div>
           <div style={{ width: `${100 - paidPercentage}%`, background: 'var(--color-warning)', height: '100%', transition: 'width 0.5s ease' }}></div>
         </div>

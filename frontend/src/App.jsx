@@ -306,7 +306,6 @@ export default function App() {
                   value={profileData.address} 
                   onChange={e => setProfileData({ ...profileData, address: e.target.value })} 
                   placeholder="Street Address, City, Postal Code"
-                  style={{ background: 'var(--bg-tertiary)', border: '1px solid var(--card-border)', color: '#fff', padding: '10px', borderRadius: '4px' }}
                 />
               </div>
 
